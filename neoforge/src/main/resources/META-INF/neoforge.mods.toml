@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[3.0,)"
+license="MIT"
+issueTrackerURL="${modIssueTracker}"
+
+[[mixins]]
+config="example-common.mixins.json"
+
+[[mixins]]
+config="example-neoforge.mixins.json"
+
+[[mods]]
+modId="example"
+version="${modVersion}"
+displayName="${modName}"
+#updateJSONURL="http://myurl.me/"
+displayURL="https://example.example"
+#logoFile="icon.png"
+#credits="Thanks for this example mod goes to Java"
+authors="${modAuthor}"
+#displayTest="MATCH_VERSION"
+
+description='''
+${modDescription}
+'''
+
+[[dependencies.example]]
+   modId="neoforge"
+   type="required"
+   versionRange="${neoforgeLoaderRange}"
+   ordering="NONE"
+   side="BOTH"
+
+[[dependencies.example]]
+   modId="minecraft"
+   type="required"
+   versionRange="${neoforgeMinecraftVersionRange}"
+   ordering="NONE"
+   side="BOTH"

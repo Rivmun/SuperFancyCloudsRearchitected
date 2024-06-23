@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "example",
+  "version": "${modVersion}",
+
+  "name": "${modName}",
+  "description": "${modDescription}",
+  "authors": ["${modAuthor}"],
+  "contact": {
+    "homepage": "${modIssueTracker}"
+  },
+
+  "license": "${modLicense}",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": ["example.example.example.fabric.ExampleFabric"],
+    "client": ["example.example.example.fabric.ExampleClientFabric"],
+    "server": ["example.example.example.fabric.ExampleServerFabric"]
+  },
+  "mixins": [
+    "example-fabric.mixins.json",
+    "example-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "${fabricLoaderRange}",
+    "minecraft": "${fabricMinecraftVersionRange}"
+  }
+}
