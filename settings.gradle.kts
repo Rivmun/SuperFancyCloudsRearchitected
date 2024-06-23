@@ -10,4 +10,4 @@ pluginManagement {
 }
 
 include("common", "fabric", "forge", "neoforge")
-rootProject.name = "ArchitecturyTemplate"
+rootProject.name = "sfcr"

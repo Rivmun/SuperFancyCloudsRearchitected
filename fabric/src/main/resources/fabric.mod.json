@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "example",
+  "id": "sfcr",
   "version": "${modVersion}",
 
   "name": "${modName}",
@@ -12,19 +12,31 @@
 
   "license": "${modLicense}",
   "icon": "icon.png",
-
   "environment": "*",
   "entrypoints": {
-    "main": ["example.example.example.fabric.ExampleFabric"],
-    "client": ["example.example.example.fabric.ExampleClientFabric"],
-    "server": ["example.example.example.fabric.ExampleServerFabric"]
+    "main": ["com.rimo.sfcr.SFCReFabric"],
+    "client": ["com.rimo.sfcr.SFCReFabric"],
+    "server": ["com.rimo.sfcr.SFCReFabric"],
+    "modmenu": ["com.rimo.sfcr.config.SFCReModMenuIntegration"]
   },
   "mixins": [
-    "example-fabric.mixins.json",
-    "example-common.mixins.json"
+    "sfcr-common.mixins.json"
   ],
   "depends": {
     "fabricloader": "${fabricLoaderRange}",
-    "minecraft": "${fabricMinecraftVersionRange}"
+    "minecraft": "${fabricMinecraftVersionRange}",
+    "architectury": ">=${archApiVersion}"
+  },
+  "suggests": {
+    "cloth-config2":">=${clothVersion}",
+    "modmenu": ">=11.0.0"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.modrinth": "https://modrinth.com/mod/superfancyclouds-refabricated",
+        "MCMOD.cn": "https://www.mcmod.cn/class/9053.html"
+      }
+    }
   }
 }

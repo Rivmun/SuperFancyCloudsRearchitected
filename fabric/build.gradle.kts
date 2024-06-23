@@ -18,6 +18,8 @@ loom {
 
 val minecraftVersion: String by extra
 val fabricApiVersion: String by extra
+val archApiVersion: String by extra
+val clothVersion: String by extra
 val fabricLoaderVersion: String by extra
 val fabricLoaderRange: String by extra
 val fabricMinecraftVersionRange: String by extra
@@ -35,11 +37,17 @@ configurations["compileClasspath"].extendsFrom(common)
 configurations["runtimeClasspath"].extendsFrom(common)
 configurations["developmentFabric"].extendsFrom(common)
 
+repositories {
+    maven(url = "https://maven.terraformersmc.com/releases/")
+}
+
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 
     // Dependencies (OPTIONAL)
     modApi("net.fabricmc.fabric-api:fabric-api:$fabricApiVersion+$minecraftVersion") // Fabric API
+    modApi("dev.architectury:architectury-fabric:$archApiVersion")
+    modImplementation("com.terraformersmc:modmenu:11.0.0")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionFabric")) { isTransitive = false }
@@ -49,7 +57,7 @@ tasks.withType<ProcessResources> {
     val replaceProperties = mapOf(
             "modVersion" to modVersion, "modName" to modName, "modLicense" to modLicense, "modIssueTracker" to modIssueTracker,
             "fabricLoaderRange" to fabricLoaderRange, "fabricMinecraftVersionRange" to fabricMinecraftVersionRange,
-            "modAuthor" to modAuthor, "modDescription" to modDescription)
+            "modAuthor" to modAuthor, "modDescription" to modDescription, "archApiVersion" to archApiVersion, "clothVersion" to clothVersion)
 
     inputs.properties(replaceProperties)
 
@@ -67,4 +75,3 @@ tasks.withType<RemapJarTask> {
     val shadowTask = tasks.shadowJar.get()
     input.set(shadowTask.archiveFile)
 }
-
