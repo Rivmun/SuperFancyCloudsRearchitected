@@ -8,6 +8,7 @@ plugins {
 }
 
 val minecraftVersion: String by extra
+//val archApiVersion: String by extra
 val forgeVersion: String by extra
 val forgeLoaderRange: String by extra
 val forgeMinecraftVersionRange: String by extra
@@ -40,6 +41,9 @@ configurations["developmentForge"].extendsFrom(common)
 
 dependencies {
     forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+
+    // Dependencies (OPTIONAL)
+    //modApi("dev.architectury:architectury-forge:$archApiVersion")
 
     common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(path = ":common", configuration = "transformProductionForge")) { isTransitive = false }
